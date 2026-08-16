@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shai Sharath Vijey S — AI Software Engineer | RAG, LLM & MCP Systems</title>
+<meta name="description" content="Shai Sharath Vijey S — AI Software Engineer building production RAG systems, MCP tool integrations, and GenAI applications with Python, FastAPI, and PyTorch.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shai-sharath-vijey-s.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shai Sharath Vijey S — AI Software Engineer">
+<meta property="og:description" content="Building production RAG systems, MCP tool integrations, and GenAI applications — hybrid retrieval, cross-encoder reranking, and synthetic data pipelines with GANs.">
+<meta property="og:image" content="assets/og-image.png">
+<meta property="og:url" content="https://shai-sharath-vijey-s.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shai Sharath Vijey S — AI Software Engineer">
+<meta name="twitter:description" content="Building production RAG systems, MCP tool integrations, and GenAI applications.">
+<meta name="twitter:image" content="assets/og-image.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* page-specific */
+  .hero{padding:96px 0 72px; border-bottom:1px solid var(--line); overflow:hidden;}
+  h1.name{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:clamp(40px, 7vw, 78px); line-height:1.02; margin:0 0 18px; letter-spacing:-0.01em;}
+  .role-line{font-size:clamp(16px, 2vw, 20px); color:var(--text-muted); max-width:640px; margin:0 0 32px;}
+  .role-line b{color:var(--text); font-weight:500;}
+  .hero-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:56px; align-items:start; margin-top:44px;}
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+  .contact-row{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:36px;}
+  .chip svg{width:13px; height:13px; opacity:0.7;}
+
+  .readout{border:1px solid var(--line); background:var(--ink-raised); border-radius:var(--radius); padding:20px 22px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--text-muted); min-height:210px; position:relative; overflow:hidden;}
+  .readout::before{content:''; position:absolute; inset:0; background:linear-gradient(rgba(124,131,253,0.06), transparent); animation:scan 4s linear infinite; pointer-events:none;}
+  @keyframes scan{0%{transform:translateY(-100%);} 100%{transform:translateY(100%);}}
+  .readout-head{display:flex; justify-content:space-between; align-items:center; padding-bottom:14px; margin-bottom:14px; border-bottom:1px solid var(--line); color:var(--text-faint); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;}
+  .readout-dots{display:flex; gap:5px;}
+  .readout-dots span{width:7px; height:7px; border-radius:50%; background:var(--line);}
+  .readout-line{margin:0 0 9px; white-space:pre-wrap; word-break:break-word;}
+  .readout-line .k{color:var(--violet);}
+  .readout-line .v{color:var(--text);}
+  .caret{display:inline-block; width:7px; height:13px; background:var(--amber); vertical-align:middle; animation:blink 1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  /* about */
+  .about-grid{display:grid; grid-template-columns:1.5fr 1fr; gap:56px;}
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+  .about-text p{color:var(--text-muted); font-size:16.5px; max-width:60ch;}
+  .about-text b{color:var(--text); font-weight:500;}
+  .stat-list{border-top:1px solid var(--line);}
+  .stat{display:flex; justify-content:space-between; align-items:baseline; padding:18px 0; border-bottom:1px solid var(--line);}
+  .stat-num{font-family:'Space Grotesk', sans-serif; font-size:30px; color:var(--amber); font-weight:600;}
+  .stat-label{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-muted); text-align:right; max-width:180px;}
+
+  /* teaser cards linking to subpages */
+  .teaser-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:860px){ .teaser-grid{grid-template-columns:1fr;} }
+  .teaser-card{background:var(--ink); padding:32px; display:flex; flex-direction:column; min-height:220px; text-decoration:none; color:var(--text); position:relative; overflow:hidden; transition:background .25s ease;}
+  .teaser-card:hover{background:var(--ink-raised);}
+  .teaser-num{font-family:'IBM Plex Mono', monospace; color:var(--text-faint); font-size:12px; margin-bottom:18px;}
+  .teaser-title{font-family:'Space Grotesk', sans-serif; font-size:22px; font-weight:600; margin:0 0 10px;}
+  .teaser-desc{color:var(--text-muted); font-size:14px; flex-grow:1;}
+  .teaser-arrow{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--amber); margin-top:16px; transition:transform .2s ease;}
+  .teaser-card:hover .teaser-arrow{transform:translateX(6px);}
+
+  /* playground */
+  .pg-wrap{border:1px solid var(--line); background:var(--ink-raised); border-radius:var(--radius); overflow:hidden;}
+  .pg-top{padding:26px 26px 0;}
+  .pg-search{display:flex; gap:10px; margin:18px 0 22px; flex-wrap:wrap;}
+  .pg-search input{flex:1; min-width:220px; background:var(--ink); border:1px solid var(--line); color:var(--text); font-family:'IBM Plex Mono', monospace; font-size:14px; padding:14px 16px; border-radius:var(--radius); outline:none;}
+  .pg-search input:focus{border-color:var(--violet);}
+  .pg-search input::placeholder{color:var(--text-faint);}
+  .pg-search button{font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:600; background:var(--amber); color:#0A0C10; border:none; padding:0 22px; border-radius:var(--radius); cursor:pointer;}
+  .pg-hint{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--text-faint); margin-bottom:22px;}
+  .pg-hint button{background:none; border:1px solid var(--line); color:var(--text-muted); font-family:'IBM Plex Mono', monospace; font-size:11px; padding:4px 9px; border-radius:20px; cursor:pointer; margin-right:6px; margin-bottom:6px;}
+  .pg-hint button:hover{color:var(--text); border-color:var(--violet);}
+  .pg-canvas-row{display:grid; grid-template-columns:1.1fr 1fr; gap:0; border-top:1px solid var(--line);}
+  @media (max-width:860px){ .pg-canvas-row{grid-template-columns:1fr;} }
+  #pgCanvas{display:block; width:100%; height:360px; background:radial-gradient(ellipse at 30% 20%, rgba(124,131,253,0.08), transparent 60%), var(--ink);}
+  .pg-results{padding:24px 26px; border-left:1px solid var(--line);}
+  @media (max-width:860px){ .pg-results{border-left:none; border-top:1px solid var(--line);} }
+  .pg-results-label{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:16px;}
+  .result{margin-bottom:18px; padding-bottom:18px; border-bottom:1px solid var(--line-soft);}
+  .result:last-child{border-bottom:none;}
+  .result-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;}
+  .result-title{font-family:'Space Grotesk', sans-serif; font-size:16px; font-weight:600;}
+  .result-score{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--amber);}
+  .result-bar{height:3px; background:var(--line); border-radius:2px; overflow:hidden; margin-bottom:8px;}
+  .result-bar-fill{height:100%; background:linear-gradient(90deg, var(--violet), var(--amber));}
+  .result-desc{font-size:13px; color:var(--text-muted);}
+</style>
+</head>
+<body>
+<div class="curtain" data-hold="1500">
+  <div class="curtain-brand">
+    <div class="cb-glow"></div>
+    <span class="cb-line display" data-reveal="chars">Shai Sharath</span>
+    <span class="cb-line display grad-text cb-line2">Vijey S</span>
+    <span class="cb-tag">AI Software Engineer</span>
+  </div>
+</div>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>SHAI&nbsp;·&nbsp;SV</a>
+    <button class="nav-toggle mono" aria-label="Menu">☰</button>
+    <nav class="links">
+      <a href="index.html" data-transition>Home</a>
+      <a href="experience.html" data-transition>Experience</a>
+      <a href="projects.html" data-transition>Projects</a>
+      <a href="skills.html" data-transition>Skills</a>
+      <a href="contact.html" data-transition>Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg-art" aria-hidden="true">
+    <svg viewBox="0 0 700 620" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="var(--violet)" stroke-width="1" opacity="0.55" fill="none">
+        <line x1="560" y1="90" x2="470" y2="200"/><line x1="560" y1="90" x2="610" y2="220"/>
+        <line x1="470" y1="200" x2="400" y2="330"/><line x1="470" y1="200" x2="560" y2="330"/>
+        <line x1="610" y1="220" x2="560" y2="330"/><line x1="610" y1="220" x2="660" y2="360"/>
+        <line x1="400" y1="330" x2="440" y2="470"/><line x1="560" y1="330" x2="440" y2="470"/>
+        <line x1="560" y1="330" x2="620" y2="480"/><line x1="660" y1="360" x2="620" y2="480"/>
+        <line x1="440" y1="470" x2="520" y2="580"/><line x1="620" y1="480" x2="520" y2="580"/>
+        <line x1="400" y1="330" x2="330" y2="440"/><line x1="330" y1="440" x2="440" y2="470"/>
+      </g>
+      <g fill="var(--amber)">
+        <circle cx="560" cy="90" r="4.5"/><circle cx="470" cy="200" r="3.5"/><circle cx="610" cy="220" r="5.5"/>
+        <circle cx="400" cy="330" r="4"/><circle cx="560" cy="330" r="6"/><circle cx="660" cy="360" r="3.5"/>
+        <circle cx="440" cy="470" r="5"/><circle cx="620" cy="480" r="4"/><circle cx="520" cy="580" r="4.5"/>
+        <circle cx="330" cy="440" r="3.5"/>
+      </g>
+      <g stroke="var(--amber)" stroke-width="1" opacity="0.4" fill="none">
+        <circle cx="560" cy="330" r="34"/><circle cx="560" cy="330" r="58"/>
+      </g>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="eyebrow reveal in">AI Software Engineer — Trichy, Tamil Nadu, India</div>
+    <h1 class="name display" id="heroName"><span class="tr-word"><span style="transition-delay:0ms">Shai</span></span> <span class="tr-word"><span style="transition-delay:70ms">Sharath</span></span><br><span class="tr-word"><span class="grad-text" style="transition-delay:140ms">Vijey</span></span> <span class="tr-word"><span class="grad-text" style="transition-delay:210ms">S</span></span></h1>
+    <p class="role-line">Building <b>production RAG systems</b>, <b>MCP tool integrations</b>, and <b>GenAI applications</b> — from hybrid retrieval and cross-encoder reranking to synthetic data pipelines with GANs.</p>
+
+    <div class="hero-grid">
+      <div>
+        <div class="contact-row">
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l9 6 9-6M3 8v10a2 2 0 002 2h14a2 2 0 002-2V8M3 8a2 2 0 012-2h14a2 2 0 012 2"/></svg> shaiyuva.sv@gmail.com</span>
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg> +91 96296 98772</span>
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20 15.3 15.3 0 010-20z"/></svg> Open to relocation</span>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="assets/Shai-Sharath-Vijey-S-Resume.pdf" download>↓ Download résumé</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/shai-sharath-vijey-s-b79546251" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn btn-ghost" href="#index">Query the index →</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="profile-card reveal in">
+          <img src="assets/profile.jpg" alt="Shai Sharath Vijey S — AI Software Engineer" class="profile-img" width="60" height="60">
+          <div class="profile-meta">
+            <span class="profile-name mono">SHAI_SHARATH_VIJEY_S.ai</span>
+            <span class="profile-status"><span class="dot-pulse"></span>Available for opportunities</span>
+          </div>
+        </div>
+        <div class="readout mono">
+          <div class="readout-head"><span>encoder.log</span><span class="readout-dots"><span></span><span></span><span></span></span></div>
+          <p class="readout-line"><span class="k">$ query</span> <span class="v" id="typeTarget"></span><span class="caret"></span></p>
+          <p class="readout-line"><span class="k">→ embed</span> <span class="v">[0.13, -0.42, 0.87, 0.05, …]</span></p>
+          <p class="readout-line"><span class="k">→ retrieve</span> <span class="v">top_k=3, hybrid=BM25+dense</span></p>
+          <p class="readout-line"><span class="k">→ rerank</span> <span class="v">cross-encoder, Δ+0.14 nDCG</span></p>
+          <p class="readout-line"><span class="k">→ match</span> <span class="v" style="color:var(--green)">Shai Sharath Vijey S — 0.94 cosine</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num mono">01</span><h2 class="section-title">About</h2></div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>I'm an AI engineer who builds the plumbing behind language models — <b>retrieval pipelines, vector search, and tool-calling infrastructure</b> — rather than just the prompts on top. At Adela Software, I work on a production RAG platform that answers natural-language tax-form queries using hybrid search (BM25 + dense embeddings) and cross-encoder reranking, backed by Qdrant and ChromaDB.</p>
+        <p>Before that, I spent time on the other side of the AI stack: training <b>GANs for synthetic tabular data</b> and fraud detection, running exploratory data analysis across finance and healthcare datasets, and shipping a Model Context Protocol tool server with ten-plus callable tools. I like systems that are explainable and deterministic where it matters, and generative where it counts.</p>
+      </div>
+      <div class="stat-list mono">
+        <div class="stat"><span class="stat-num">1+</span><span class="stat-label">Year building production RAG &amp; LLM systems</span></div>
+        <div class="stat"><span class="stat-num">4</span><span class="stat-label">AI/ML roles across internships and full-time work</span></div>
+        <div class="stat"><span class="stat-num">5</span><span class="stat-label">Shipped projects — RAG, MCP, vector search, GANs, data pipelines</span></div>
+        <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Certifications in ML, data science &amp; GenAI</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="explore">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num mono">02</span><h2 class="section-title">Explore the system</h2><span class="section-sub" style="margin-top:0;">Each page is a different view into the same index.</span></div>
+    <div class="teaser-grid reveal">
+      <a class="teaser-card" href="experience.html" data-transition>
+        <span class="teaser-num mono">timeline/</span>
+        <h3 class="teaser-title">Experience</h3>
+        <p class="teaser-desc">A scroll-filled career rail from first ML internship to production AI engineering at Adela.</p>
+        <span class="teaser-arrow">View timeline →</span>
+      </a>
+      <a class="teaser-card" href="projects.html" data-transition>
+        <span class="teaser-num mono">projects/</span>
+        <h3 class="teaser-title">Projects</h3>
+        <p class="teaser-desc">RAG platforms, an MCP tool hub, vector search over legacy code, GAN-based synthetic data, and a multi-source job-data pipeline.</p>
+        <span class="teaser-arrow">View projects →</span>
+      </a>
+      <a class="teaser-card" href="skills.html" data-transition>
+        <span class="teaser-num mono">skills/</span>
+        <h3 class="teaser-title">Skills</h3>
+        <p class="teaser-desc">An animated stack map — from Python and PyTorch to Qdrant, LangChain and FastAPI.</p>
+        <span class="teaser-arrow">View stack →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="index">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num mono">03</span><h2 class="section-title">Query the index</h2></div>
+    <p class="section-sub reveal" style="margin-top:-24px; margin-bottom:36px;">This is the same idea behind the RAG platform above, running in miniature: your query gets scored against an index of my skills and projects, then the closest matches are retrieved and ranked — live, in your browser.</p>
+    <div class="pg-wrap reveal">
+      <div class="pg-top">
+        <div class="pg-search">
+          <input id="pgInput" type="text" placeholder="Try “vector search”, “GANs”, or “automation”…" autocomplete="off">
+          <button id="pgBtn">Search index →</button>
+        </div>
+      </div>
+      <div class="pg-canvas-row">
+        <canvas id="pgCanvas"></canvas>
+        <div class="pg-results"><div class="pg-results-label">Top matches</div><div id="pgResults"></div></div>
+      </div>
+      <div style="padding:0 26px 22px;">
+        <div class="pg-hint">
+          Try:
+          <button data-q="retrieval augmented generation">RAG</button>
+          <button data-q="model context protocol tools">MCP</button>
+          <button data-q="generative adversarial networks">GANs</button>
+          <button data-q="vector database semantic search">vector search</button>
+          <button data-q="web scraping automation">automation</button>
+          <button data-q="job scraper pipeline dashboard">job radar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid reveal">
+      <div>
+        <h3 class="footer-cta display">Have a system worth<br>building? Let's talk.</h3>
+        <a class="btn btn-primary" href="contact.html" data-transition>Get in touch →</a>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:shaiyuva.sv@gmail.com">shaiyuva.sv@gmail.com</a>
+        <a href="tel:+919629698772">+91 96296 98772</a>
+        <a href="https://www.linkedin.com/in/shai-sharath-vijey-s-b79546251" target="_blank" rel="noopener">linkedin.com/in/shai-sharath-vijey-s</a>
+        <a href="assets/Shai-Sharath-Vijey-S-Resume.pdf" download>Download résumé (PDF)</a>
+        <span style="color:var(--text-faint)">Trichy, Tamil Nadu, India</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Shai Sharath Vijey S.</span>
+      <div class="footer-nav mono">
+        <a href="index.html" data-transition>Home</a>
+        <a href="experience.html" data-transition>Experience</a>
+        <a href="projects.html" data-transition>Projects</a>
+        <a href="skills.html" data-transition>Skills</a>
+        <a href="contact.html" data-transition>Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+<script>
+/* hero name reveal, timed to the moment the curtain sweeps away */
+setTimeout(()=>{ const h = document.getElementById('heroName'); if(h) h.classList.add('tr-ready'); }, 1500);
+</script>
+<script>
+/* typewriter */
+(function(){
+  const target = document.getElementById('typeTarget');
+  const phrases = ['"production RAG systems"', '"MCP tool integrations"', '"hybrid retrieval + reranking"', '"GAN synthetic data"'];
+  let pi = 0, ci = 0, deleting = false;
+  function tick(){
+    const full = phrases[pi];
+    if(!deleting){ ci++; target.textContent = full.slice(0, ci); if(ci === full.length){ deleting = true; setTimeout(tick, 1400); return; } }
+    else { ci--; target.textContent = full.slice(0, ci); if(ci === 0){ deleting = false; pi = (pi+1) % phrases.length; } }
+    setTimeout(tick, deleting ? 28 : 55);
+  }
+  tick();
+})();
+
+/* retrieval playground */
+(function(){
+  const nodes = [
+    {label:"RAG Platform", tags:["rag","retrieval","augmented","generation","fastapi","qdrant","chromadb","langchain","tax","hybrid","bm25","dense"], desc:"Production RAG system for natural-language tax-form queries."},
+    {label:"MCP Tool Hub", tags:["mcp","model","context","protocol","automation","selenium","flask","pyinstaller","tools","tool","calling"], desc:"Modular MCP tool server with 10+ callable automation tools."},
+    {label:"Legacy Code Intelligence", tags:["php","asp","vector","search","qdrant","static","analysis","dashboard","legacy","codebase"], desc:"Vector-indexed code search over an undocumented legacy codebase."},
+    {label:"Synthetic Data — GANs", tags:["gan","gans","ctgan","realtabformer","pytorch","synthetic","data","generative","adversarial"], desc:"CTGAN + custom GAN pipeline generating synthetic tabular data."},
+    {label:"Hybrid Retrieval", tags:["bm25","dense","embeddings","reranking","rerank","cross-encoder","hybrid","retrieval"], desc:"BM25 + dense embedding retrieval with cross-encoder reranking."},
+    {label:"Vector Databases", tags:["qdrant","chromadb","vector","database","semantic","search","embeddings"], desc:"Hands-on with Qdrant and ChromaDB for semantic search at scale."},
+    {label:"Python Engineering", tags:["python","pandas","numpy","scikit-learn","sklearn","sql"], desc:"Core language for every ML pipeline and backend service I ship."},
+    {label:"LLM Systems", tags:["llm","llms","genai","generative","ai","inference","prompting","chat"], desc:"Multi-session AI chat service and LLM-driven query analysis."},
+    {label:"FastAPI Backend", tags:["fastapi","flask","rest","api","async","gunicorn","render","backend"], desc:"Async REST backends deployed with FastAPI, Flask and Gunicorn."},
+    {label:"GAN Research", tags:["gan","gans","realtabformer","ctgan","generative","research"], desc:"Tested CTGAN and RealTabFormer for privacy-preserving datasets."},
+    {label:"Data Analysis", tags:["eda","statistics","statistical","power","bi","matplotlib","seaborn","visualization"], desc:"EDA and statistical validation across finance and healthcare data."},
+    {label:"Automation & Scraping", tags:["selenium","web","scraping","automation","fastmcp"], desc:"Selenium-driven scraping wired into MCP-callable tools."},
+    {label:"Certifications", tags:["tata","forage","upgrad","scaler","lmes","genai","analytics","certification"], desc:"Six certifications spanning GenAI, ML, and data science."},
+    {label:"Hackathon Win", tags:["hackathon","psg","air","purifier","innovation","award"], desc:"Regional hackathon win at PSG College of Technology."},
+    {label:"Fresher Job Radar — Multi-Source Aggregator & MCP Server", tags:["scraping","scraper","etl","pipeline","dashboard","sse","mcp","jobs","automation","rate","limit","circuit","breaker","flask","sqlite","playwright"], desc:"Multi-source job scraper with a live dashboard and a read-only MCP server."}
+  ];
+  const canvas = document.getElementById('pgCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, DPR; const positions = [];
+  function layout(){
+    const rect = canvas.getBoundingClientRect();
+    DPR = window.devicePixelRatio || 1; W = rect.width; H = rect.height;
+    canvas.width = W * DPR; canvas.height = H * DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    positions.length = 0;
+    const cx = W/2, cy = H/2, n = nodes.length;
+    for(let i=0;i<n;i++){
+      const angle = (i / n) * Math.PI * 2 + 0.4;
+      const rx = Math.min(W,H)*0.40 * (0.65 + 0.35*Math.sin(i*2.1));
+      const ry = Math.min(W,H)*0.40 * (0.65 + 0.35*Math.cos(i*1.7));
+      positions.push({x: cx + Math.cos(angle) * rx, y: cy + Math.sin(angle) * ry, phase: Math.random()*Math.PI*2});
+    }
+  }
+  let activeMatches = [], queryPoint = null, t = 0;
+  function draw(){
+    t += 0.016; ctx.clearRect(0,0,W,H);
+    const cx = W/2, cy = H/2;
+    const drawn = positions.map((p)=>({x: p.x + Math.sin(t*0.6 + p.phase)*4, y: p.y + Math.cos(t*0.5 + p.phase)*4}));
+    if(queryPoint){
+      activeMatches.forEach(m=>{
+        const p = drawn[m.idx];
+        ctx.beginPath(); ctx.moveTo(queryPoint.x, queryPoint.y); ctx.lineTo(p.x, p.y);
+        ctx.strokeStyle = `rgba(242,184,75,${0.25 + m.score*0.55})`; ctx.lineWidth = 1 + m.score*2.2; ctx.stroke();
+      });
+    }
+    drawn.forEach((p,i)=>{
+      const match = activeMatches.find(m=>m.idx===i);
+      const r = match ? 6 + match.score*5 : 3.4;
+      ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI*2);
+      ctx.fillStyle = match ? '#F2B84B' : 'rgba(124,131,253,0.55)'; ctx.fill();
+      if(match){ ctx.font = "11px 'IBM Plex Mono', monospace"; ctx.fillStyle = 'rgba(241,239,230,0.85)'; ctx.fillText(nodes[i].label, p.x + r + 6, p.y + 4); }
+    });
+    if(queryPoint){
+      ctx.beginPath(); ctx.arc(queryPoint.x, queryPoint.y, 5.5, 0, Math.PI*2); ctx.fillStyle = '#F1EFE6'; ctx.fill();
+      ctx.beginPath(); ctx.arc(queryPoint.x, queryPoint.y, 9 + Math.sin(t*3)*2, 0, Math.PI*2); ctx.strokeStyle = 'rgba(241,239,230,0.35)'; ctx.lineWidth = 1; ctx.stroke();
+    } else { ctx.beginPath(); ctx.arc(cx, cy, 3, 0, Math.PI*2); ctx.fillStyle = 'rgba(139,146,165,0.5)'; ctx.fill(); }
+    requestAnimationFrame(draw);
+  }
+  function score(query, node){
+    const qwords = query.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+    if(qwords.length === 0) return 0;
+    let hits = 0;
+    qwords.forEach(w=>{ if(node.tags.some(tag => tag.includes(w) || w.includes(tag))) hits++; if(node.label.toLowerCase().includes(w)) hits += 0.6; });
+    return Math.min(1, hits / Math.max(2, qwords.length));
+  }
+  function runQuery(q){
+    const results = nodes.map((n,i)=>({idx:i, score: score(q,n), node:n})).filter(r=>r.score>0).sort((a,b)=>b.score-a.score).slice(0,4);
+    const cx = W/2, cy = H/2;
+    queryPoint = {x:cx, y:cy};
+    activeMatches = results.map(r=>({idx:r.idx, score:r.score}));
+    const resultsEl = document.getElementById('pgResults');
+    if(results.length === 0){ resultsEl.innerHTML = '<div style="color:var(--text-faint); font-size:13px;">No index entries matched. Try “RAG”, “MCP”, or “GANs”.</div>'; return; }
+    resultsEl.innerHTML = results.map(r => `
+      <div class="result">
+        <div class="result-top"><span class="result-title">${r.node.label}</span><span class="result-score mono">${r.score.toFixed(2)} cos</span></div>
+        <div class="result-bar"><div class="result-bar-fill" style="width:${Math.round(r.score*100)}%"></div></div>
+        <div class="result-desc">${r.node.desc}</div>
+      </div>`).join('');
+  }
+  window.addEventListener('resize', layout); layout(); draw();
+  document.getElementById('pgBtn').addEventListener('click', ()=>{ const v = document.getElementById('pgInput').value.trim(); if(v) runQuery(v); });
+  document.getElementById('pgInput').addEventListener('keydown', (e)=>{ if(e.key === 'Enter'){ runQuery(e.target.value.trim()); } });
+  document.querySelectorAll('.pg-hint button').forEach(btn=>{ btn.addEventListener('click', ()=>{ const q = btn.getAttribute('data-q'); document.getElementById('pgInput').value = q; runQuery(q); }); });
+  setTimeout(()=>{ runQuery('retrieval augmented generation'); document.getElementById('pgInput').value = 'retrieval augmented generation'; }, 600);
+})();
+</script>
+</body>
+</html>

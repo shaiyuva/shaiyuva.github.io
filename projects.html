@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Shai Sharath Vijey S</title>
+<meta name="description" content="RAG platforms, an MCP tool hub, vector search over legacy code, GAN synthetic data, and a multi-source job aggregator by Shai Sharath Vijey S.">
+<link rel="canonical" href="https://shai-sharath-vijey-s.github.io/projects.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projects — Shai Sharath Vijey S">
+<meta property="og:description" content="Five systems: retrieval at production scale, tool orchestration, legacy code search, generative synthetic data, and a data pipeline exposed through MCP.">
+<meta property="og:image" content="assets/og-image.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .proj-block{padding:56px 0; border-bottom:1px solid var(--line);}
+  .proj-head{display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; margin-bottom:22px;}
+  .proj-index{font-family:'IBM Plex Mono', monospace; color:var(--text-faint); font-size:12px; margin-bottom:10px; letter-spacing:0.06em; text-transform:uppercase;}
+  .proj-title{font-family:'Space Grotesk', sans-serif; font-size:clamp(22px,3vw,30px); font-weight:600; margin:0;}
+  .proj-status{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--green); border:1px solid rgba(111,207,151,0.3); padding:4px 10px; border-radius:20px; white-space:nowrap; height:fit-content;}
+  .proj-cols{display:grid; grid-template-columns:1.15fr 1fr; gap:44px; align-items:start;}
+  @media (max-width:900px){ .proj-cols{grid-template-columns:1fr;} }
+  .proj-desc{color:var(--text-muted); font-size:15.5px; max-width:62ch;}
+  .proj-desc ul{padding-left:18px; margin:12px 0 0;}
+  .proj-desc li{margin-bottom:8px;}
+  .proj-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  .tagpill{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--text-muted); border:1px solid var(--line); padding:4px 9px; border-radius:20px;}
+
+  /* pipeline diagram */
+  .pipeline{border:1px solid var(--line); background:var(--ink-raised); border-radius:var(--radius); padding:26px 20px; overflow:hidden;}
+  .pipeline-label{font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:18px;}
+  .pipe-row{display:flex; align-items:center; gap:0; flex-wrap:wrap;}
+  .pipe-node{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--text);
+    border:1px solid var(--line); background:var(--ink); padding:10px 12px; border-radius:var(--radius);
+    text-align:center; min-width:86px; opacity:0; transform:translateY(8px); transition:opacity .5s ease, transform .5s ease, border-color .3s ease;
+  }
+  .pipe-node.in{opacity:1; transform:translateY(0);}
+  .pipe-node:hover{border-color:var(--amber);}
+  .pipe-arrow{flex:0 0 auto; width:28px; height:2px; background:var(--line); position:relative; margin:0 2px;}
+  .pipe-arrow::after{content:''; position:absolute; right:-1px; top:50%; width:6px; height:6px; border-right:2px solid var(--line); border-bottom:2px solid var(--line); transform:translateY(-50%) rotate(-45deg);}
+  .pipe-arrow.in{background:var(--amber);}
+  .pipe-arrow.in::after{border-color:var(--amber);}
+  .pipe-node.match{border-color:var(--green); color:var(--green);}
+
+  /* venn for chroma/vector */
+  .venn{display:flex; justify-content:center; align-items:center; height:180px; position:relative;}
+  .venn svg circle{transition:transform 1s var(--ease), opacity 1s var(--ease);}
+
+  /* gan bars */
+  .gan-bars{display:flex; align-items:flex-end; gap:6px; height:140px; padding:10px;}
+  .gan-bar{flex:1; background:linear-gradient(var(--violet), var(--amber)); border-radius:2px 2px 0 0; height:0; transition:height 1s var(--ease);}
+
+  /* source cluster + guard bars (job aggregator) */
+  .src-cluster{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
+  .src-node{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--text-muted);
+    border:1px solid var(--line); background:var(--ink); padding:7px 11px; border-radius:20px;
+    opacity:0; transform:translateY(6px); transition:opacity .45s ease, transform .45s ease, border-color .25s ease;
+  }
+  .src-node.in{opacity:1; transform:translateY(0);}
+  .src-node.guard-open{border-color:var(--green); color:var(--green);}
+  .guard-bars{display:flex; flex-direction:column; gap:10px; margin-top:4px;}
+  .guard-row{display:flex; align-items:center; gap:10px;}
+  .guard-name{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--text-muted); width:84px; flex-shrink:0;}
+  .guard-track{flex:1; height:6px; background:var(--line); border-radius:4px; overflow:hidden;}
+  .guard-fill{height:100%; width:0%; background:linear-gradient(90deg, var(--violet), var(--amber)); transition:width 1.1s var(--ease);}
+  .guard-pct{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--text-faint); width:34px; text-align:right;}
+  .stat-strip{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:20px;}
+  .stat-strip div{background:var(--ink-raised); padding:14px 16px;}
+  .stat-strip .n{font-family:'Space Grotesk', sans-serif; color:var(--amber); font-size:20px; font-weight:600;}
+  .stat-strip .l{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--text-faint); margin-top:2px;}
+</style>
+</head>
+<body>
+<div class="curtain"><span class="mono">projects.render()</span></div>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>SHAI&nbsp;·&nbsp;SV</a>
+    <button class="nav-toggle mono" aria-label="Menu">☰</button>
+    <nav class="links">
+      <a href="index.html" data-transition>Home</a>
+      <a href="experience.html" data-transition>Experience</a>
+      <a href="projects.html" data-transition>Projects</a>
+      <a href="skills.html" data-transition>Skills</a>
+      <a href="contact.html" data-transition>Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="hero-bg-art" aria-hidden="true">
+    <svg viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="var(--violet)" stroke-width="1" opacity="0.55">
+        <rect x="380" y="60" width="220" height="140" rx="4"/>
+        <rect x="440" y="240" width="160" height="110" rx="4"/>
+        <rect x="260" y="290" width="120" height="90" rx="4"/>
+      </g>
+      <g stroke="var(--amber)" stroke-width="1.4" opacity="0.7" fill="none">
+        <path d="M380 110 H320 V60"/><path d="M600 130 H660 V60 H620"/>
+        <path d="M440 280 H400 V240"/><path d="M600 300 H660"/>
+        <path d="M320 330 H260"/><path d="M380 340 H430 V350"/>
+      </g>
+      <g fill="var(--amber)">
+        <circle cx="320" cy="60" r="3.5"/><circle cx="620" cy="60" r="3.5"/><circle cx="660" cy="60" r="3.5"/>
+        <circle cx="400" cy="240" r="3.5"/><circle cx="660" cy="300" r="3.5"/><circle cx="260" cy="330" r="3.5"/>
+        <circle cx="430" cy="350" r="3.5"/>
+      </g>
+      <g stroke="var(--line)" stroke-width="1" opacity="0.6">
+        <path d="M480 60 V30 M480 200 V230" /><path d="M520 240 V210" />
+      </g>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="page-eyebrow">03 — Selected work</div>
+    <h1 class="page-title display" data-reveal="chars">Projects</h1>
+    <p class="page-sub">Five systems, five different problems: retrieval at production scale, tool orchestration, search over undocumented legacy code, generative synthetic data, and a multi-source data pipeline exposed through MCP. Each diagram animates as it enters view.</p>
+  </div>
+</section>
+
+<!-- 01 RAG -->
+<section class="proj-block">
+  <div class="wrap">
+    <div class="proj-head reveal">
+      <div><div class="proj-index">01 / Retrieval-augmented generation</div><h2 class="proj-title">AI-Powered Tax Form Processing &amp; RAG Platform</h2></div>
+      <span class="proj-status">production · Adela Software</span>
+    </div>
+    <div class="proj-cols">
+      <div class="proj-desc reveal">
+        <p>Engineered core retrieval and reranking components of a production RAG system that answers natural-language queries against reference tax forms and publications.</p>
+        <ul>
+          <li>Hybrid search combining BM25 keyword matching with dense embedding retrieval.</li>
+          <li>Cross-encoder reranking layer to lift precision on the top-k candidates.</li>
+          <li>GPU-orchestrated multi-worker inference pool for scalable LLM serving.</li>
+          <li>Multi-session AI chat service and LLM-driven query analysis on top of the retrieval core.</li>
+        </ul>
+        <div class="proj-tags"><span class="tagpill">FastAPI</span><span class="tagpill">LangChain</span><span class="tagpill">ChromaDB</span><span class="tagpill">Qdrant</span><span class="tagpill">Hybrid Search</span></div>
+      </div>
+      <div class="pipeline reveal-scale">
+        <div class="pipeline-label">request lifecycle</div>
+        <div class="pipe-row" data-pipeline>
+          <div class="pipe-node">Query</div><div class="pipe-arrow"></div>
+          <div class="pipe-node">Embed</div><div class="pipe-arrow"></div>
+          <div class="pipe-node">BM25 + Dense</div><div class="pipe-arrow"></div>
+          <div class="pipe-node">Rerank</div><div class="pipe-arrow"></div>
+          <div class="pipe-node match">Answer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 MCP -->
+<section class="proj-block">
+  <div class="wrap">
+    <div class="proj-head reveal">
+      <div><div class="proj-index">02 / Tool orchestration</div><h2 class="proj-title">MCP Tool Hub — Multi-Tool AI Assistant Platform</h2></div>
+      <span class="proj-status" style="color:var(--violet); border-color:var(--violet-dim);">personal project</span>
+    </div>
+    <div class="proj-cols">
+      <div class="proj-desc reveal">
+        <p>Modular AI tool server on the Model Context Protocol (MCP) with 10+ callable tools — weather/rain detection, currency conversion, a safe math-expression calculator, multi-provider translation, QR generation, image conversion, dictionary lookup, timezone conversion, and Selenium-based scraping.</p>
+        <ul>
+          <li>Dynamic tool-loading system that auto-discovers and registers modules at runtime.</li>
+          <li>Flask web UI that parses natural-language commands and routes them to the correct MCP tool.</li>
+          <li>Automated EXE packaging pipeline with PyInstaller — auto-detects dependencies and hidden imports to build a standalone Windows executable from any Flask/MCP project.</li>
+        </ul>
+        <div class="proj-tags"><span class="tagpill">FastMCP</span><span class="tagpill">Flask</span><span class="tagpill">Selenium</span><span class="tagpill">PyInstaller</span><span class="tagpill">httpx</span></div>
+      </div>
+      <div class="pipeline reveal-scale">
+        <div class="pipeline-label">command routing</div>
+        <div class="pipe-row" data-pipeline>
+          <div class="pipe-node">Command</div><div class="pipe-arrow"></div>
+          <div class="pipe-node">Intent parse</div><div class="pipe-arrow"></div>
+          <div class="pipe-node">Tool registry</div><div class="pipe-arrow"></div>
+          <div class="pipe-node match">10+ tools</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 legacy vector search -->
+<section class="proj-block">
+  <div class="wrap">
+    <div class="proj-head reveal">
+      <div><div class="proj-index">03 / Code intelligence</div><h2 class="proj-title">Legacy Codebase Intelligence &amp; Vector Search Dashboard</h2></div>
+      <span class="proj-status">production · Adela Software</span>
+    </div>
+    <div class="proj-cols">
+      <div class="proj-desc reveal">
+        <p>Built key components of a system that reverse-engineered an undocumented, legacy PHP/ASP application into a vector-indexed, searchable code base.</p>
+        <ul>
+          <li>Static-analysis engine that chunks and indexes legacy source into Qdrant.</li>
+          <li>Vector-indexed code-chunk search — semantic lookups over code with no existing documentation.</li>
+          <li>Flask analytics dashboard with async job processing and drift detection between indexing runs.</li>
+        </ul>
+        <div class="proj-tags"><span class="tagpill">Python</span><span class="tagpill">Qdrant</span><span class="tagpill">Static Analysis</span><span class="tagpill">JavaScript</span><span class="tagpill">Flask</span></div>
+      </div>
+      <div class="pipeline reveal-scale">
+        <div class="pipeline-label">codebase → vectors</div>
+        <div class="venn">
+          <svg width="220" height="160" viewBox="0 0 220 160">
+            <circle class="c1" cx="90" cy="80" r="55" fill="rgba(124,131,253,0.18)" stroke="var(--violet)" stroke-width="1.5" opacity="0"/>
+            <circle class="c2" cx="140" cy="80" r="55" fill="rgba(242,184,75,0.18)" stroke="var(--amber)" stroke-width="1.5" opacity="0"/>
+            <text x="60" y="84" fill="var(--text-muted)" font-family="IBM Plex Mono, monospace" font-size="11">legacy code</text>
+            <text x="132" y="84" fill="var(--text-muted)" font-family="IBM Plex Mono, monospace" font-size="11">embeddings</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 GAN -->
+<section class="proj-block">
+  <div class="wrap">
+    <div class="proj-head reveal">
+      <div><div class="proj-index">04 / Generative modeling</div><h2 class="proj-title">Synthetic Data Generation using GANs</h2></div>
+      <span class="proj-status" style="color:var(--violet); border-color:var(--violet-dim);">academic project</span>
+    </div>
+    <div class="proj-cols">
+      <div class="proj-desc reveal">
+        <p>CTGAN + custom GAN pipeline that generates, evaluates, and exports synthetic tabular data, built to let teams test against realistic data without exposing real records.</p>
+        <ul>
+          <li>Reached 90% statistical similarity to real datasets via KL divergence, Jensen–Shannon distance, and chi-square validation.</li>
+          <li>Dashboards comparing real vs. synthetic distributions across finance and healthcare domains.</li>
+          <li>Flask front-end for generating, evaluating, and downloading synthetic datasets on demand.</li>
+        </ul>
+        <div class="proj-tags"><span class="tagpill">PyTorch</span><span class="tagpill">CTGAN</span><span class="tagpill">Flask</span><span class="tagpill">Matplotlib</span><span class="tagpill">Seaborn</span></div>
+      </div>
+      <div class="pipeline reveal-scale">
+        <div class="pipeline-label">real vs. synthetic similarity</div>
+        <div class="gan-bars" data-gan>
+          <div class="gan-bar" data-h="62"></div><div class="gan-bar" data-h="80"></div><div class="gan-bar" data-h="71"></div>
+          <div class="gan-bar" data-h="90"></div><div class="gan-bar" data-h="85"></div><div class="gan-bar" data-h="93"></div>
+          <div class="gan-bar" data-h="88"></div><div class="gan-bar" data-h="76"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 JOB AGGREGATOR + MCP -->
+<section class="proj-block" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="proj-head reveal">
+      <div><div class="proj-index">05 / Data pipeline &amp; MCP integration</div><h2 class="proj-title">Fresher Job Radar — Multi-Source Aggregator &amp; MCP Server</h2></div>
+      <span class="proj-status" style="color:var(--violet); border-color:var(--violet-dim);">personal project</span>
+    </div>
+    <div class="proj-cols">
+      <div class="proj-desc reveal">
+        <p>A continuously-running pipeline that sweeps five job sources across every city × role combination in Tamil Nadu and Karnataka (plus Remote), filters for genuinely fresher-appropriate roles, and exposes the results two ways: a live web dashboard and a natural-language-queryable MCP server.</p>
+        <ul>
+          <li>Five collectors — Naukri, LinkedIn, Internshala, Ashby, and Greenhouse/Lever career pages — each wrapped in a <b>per-source rate-limit budget and circuit breaker</b> so a string of errors pauses that source instead of risking a ban.</li>
+          <li>A fresher/experience filter reads the title, experience field, <i>and</i> full description to classify each listing MATCH / REJECT / UNKNOWN, then a dedup pass merges duplicate postings across sources by normalized company + title + location.</li>
+          <li>A bounded "deep research" pass opens each surviving listing's real posting page — plain HTTP first, falling back to headless Playwright only when the page looks JS-rendered — to pull the full description, a skills list, salary, and application deadline.</li>
+          <li>Every new company gets its real official website resolved and cached (not just its job-board listing page), so results link somewhere useful.</li>
+          <li>A Flask dashboard streams live scrape stats over Server-Sent Events — per-source budgets, circuit-breaker state, and a filterable results table.</li>
+          <li>The whole database is also exposed <b>read-only through a custom MCP server</b> — Claude Desktop can answer "show me fresher Python jobs in Chennai" directly from the live data.</li>
+        </ul>
+        <div class="proj-tags"><span class="tagpill">Python</span><span class="tagpill">Flask</span><span class="tagpill">SQLite</span><span class="tagpill">BeautifulSoup</span><span class="tagpill">Playwright</span><span class="tagpill">FastMCP</span><span class="tagpill">Server-Sent Events</span></div>
+        <div class="stat-strip reveal-stagger">
+          <div><div class="n">5</div><div class="l">sources swept per cycle</div></div>
+          <div><div class="n">50+</div><div class="l">target unique companies</div></div>
+          <div><div class="n">2</div><div class="l">access modes — dashboard + MCP</div></div>
+          <div><div class="n">1hr</div><div class="l">query cooldown per combo</div></div>
+        </div>
+      </div>
+      <div class="pipeline reveal-scale">
+        <div class="pipeline-label">collection → delivery</div>
+        <div class="src-cluster" data-srccluster>
+          <span class="src-node">Naukri</span><span class="src-node">LinkedIn</span><span class="src-node">Internshala</span><span class="src-node">Ashby</span><span class="src-node">Career pages</span>
+        </div>
+        <div class="pipe-row" data-pipeline style="margin-bottom:22px;">
+          <div class="pipe-node">Fresher filter</div><div class="pipe-arrow"></div>
+          <div class="pipe-node">Dedupe</div><div class="pipe-arrow"></div>
+          <div class="pipe-node">Deep extract</div><div class="pipe-arrow"></div>
+          <div class="pipe-node match">SQLite</div>
+        </div>
+        <div class="pipeline-label">read access</div>
+        <div class="pipe-row" data-pipeline style="margin-bottom:24px;">
+          <div class="pipe-node match">SQLite</div><div class="pipe-arrow"></div>
+          <div class="pipe-node">Flask + SSE dashboard</div>
+        </div>
+        <div class="pipe-row" data-pipeline>
+          <div class="pipe-node match">SQLite</div><div class="pipe-arrow"></div>
+          <div class="pipe-node">MCP server → Claude Desktop</div>
+        </div>
+        <div class="pipeline-label" style="margin-top:22px;">per-source safety budget</div>
+        <div class="guard-bars" data-guards>
+          <div class="guard-row"><span class="guard-name">naukri</span><div class="guard-track"><div class="guard-fill" data-w="42"></div></div><span class="guard-pct">42%</span></div>
+          <div class="guard-row"><span class="guard-name">linkedin</span><div class="guard-track"><div class="guard-fill" data-w="15"></div></div><span class="guard-pct">15%</span></div>
+          <div class="guard-row"><span class="guard-name">internshala</span><div class="guard-track"><div class="guard-fill" data-w="30"></div></div><span class="guard-pct">30%</span></div>
+          <div class="guard-row"><span class="guard-name">ashby</span><div class="guard-track"><div class="guard-fill" data-w="20"></div></div><span class="guard-pct">20%</span></div>
+          <div class="guard-row"><span class="guard-name">career pgs</span><div class="guard-track"><div class="guard-fill" data-w="35"></div></div><span class="guard-pct">35%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid reveal">
+      <div>
+        <h3 class="footer-cta display">Curious about the<br>stack behind these?</h3>
+        <a class="btn btn-primary" href="skills.html" data-transition>View skills →</a>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:shaiyuva.sv@gmail.com">shaiyuva.sv@gmail.com</a>
+        <a href="tel:+919629698772">+91 96296 98772</a>
+        <a href="https://www.linkedin.com/in/shai-sharath-vijey-s-b79546251" target="_blank" rel="noopener">linkedin.com/in/shai-sharath-vijey-s</a>
+        <a href="assets/Shai-Sharath-Vijey-S-Resume.pdf" download>Download résumé (PDF)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Shai Sharath Vijey S.</span>
+      <div class="footer-nav mono">
+        <a href="index.html" data-transition>Home</a>
+        <a href="experience.html" data-transition>Experience</a>
+        <a href="projects.html" data-transition>Projects</a>
+        <a href="skills.html" data-transition>Skills</a>
+        <a href="contact.html" data-transition>Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+<script>
+/* pipeline node/arrow reveal */
+(function(){
+  const rows = document.querySelectorAll('[data-pipeline]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const children = e.target.children;
+        Array.from(children).forEach((c,i)=>{ setTimeout(()=>c.classList.add('in'), i*160); });
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.4});
+  rows.forEach(r=>io.observe(r));
+})();
+
+/* venn circles */
+(function(){
+  const venns = document.querySelectorAll('.venn');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const c1 = e.target.querySelector('.c1'), c2 = e.target.querySelector('.c2');
+        c1.style.opacity = 1; c2.style.opacity = 1;
+        c1.style.transform = 'translateX(-8px)'; c2.style.transform = 'translateX(8px)';
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.4});
+  venns.forEach(v=>io.observe(v));
+})();
+
+/* GAN bars */
+(function(){
+  const groups = document.querySelectorAll('[data-gan]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.gan-bar').forEach((b,i)=>{
+          setTimeout(()=>{ b.style.height = b.getAttribute('data-h') + '%'; }, i*90);
+        });
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.4});
+  groups.forEach(g=>io.observe(g));
+})();
+
+/* source cluster chips (job aggregator) */
+(function(){
+  const clusters = document.querySelectorAll('[data-srccluster]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        Array.from(e.target.children).forEach((c,i)=>{
+          setTimeout(()=>{ c.classList.add('in'); setTimeout(()=>c.classList.add('guard-open'), 900); }, i*110);
+        });
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.4});
+  clusters.forEach(c=>io.observe(c));
+})();
+
+/* per-source guard bars (job aggregator) */
+(function(){
+  const groups = document.querySelectorAll('[data-guards]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.guard-fill').forEach((b,i)=>{
+          setTimeout(()=>{ b.style.width = b.getAttribute('data-w') + '%'; }, i*120);
+        });
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.4});
+  groups.forEach(g=>io.observe(g));
+})();
+</script>
+</body>
+</html>

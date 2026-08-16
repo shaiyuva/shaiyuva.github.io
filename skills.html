@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — Shai Sharath Vijey S</title>
+<meta name="description" content="Technical skill map of Shai Sharath Vijey S — Python, PyTorch, FastAPI, Qdrant, ChromaDB, LangChain, MCP, and more.">
+<link rel="canonical" href="https://shai-sharath-vijey-s.github.io/skills.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Skills — Shai Sharath Vijey S">
+<meta property="og:description" content="The tools I reach for, grouped by what they're for, plus a live dependency graph of how they connect.">
+<meta property="og:image" content="assets/og-image.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .badge-grid{display:flex; flex-wrap:wrap; gap:38px 26px; padding-bottom:14px;}
+
+  #netCanvas{display:block; width:100%; height:420px; background:radial-gradient(ellipse at 70% 30%, rgba(242,184,75,0.06), transparent 60%), var(--ink-raised); border:1px solid var(--line); border-radius:var(--radius);}
+  .net-legend{display:flex; gap:20px; flex-wrap:wrap; margin-top:16px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--text-muted);}
+  .net-legend span{display:inline-flex; align-items:center; gap:7px;}
+  .net-dot{width:9px; height:9px; border-radius:50%; display:inline-block;}
+
+  .skill-groups{display:grid; grid-template-columns:repeat(2,1fr); gap:40px 56px;}
+  @media (max-width:720px){ .skill-groups{grid-template-columns:1fr;} }
+  .skill-group-title{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--violet); margin-bottom:14px;}
+  .skill-chips{display:flex; flex-wrap:wrap; gap:9px;}
+  .skill-chip{font-size:13.5px; padding:8px 13px; border:1px solid var(--line); border-radius:20px; color:var(--text); transition:border-color .2s ease, transform .2s ease;}
+  .skill-chip:hover{border-color:var(--amber); transform:translateY(-2px);}
+
+  .cert-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:56px;}
+  @media (max-width:860px){ .cert-grid{grid-template-columns:1fr;} }
+  .cert-list, .ach-list{list-style:none; margin:0; padding:0;}
+  .cert-list li, .ach-list li{padding:16px 0; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:16px; font-size:14.5px;}
+  .cert-list li span:first-child{color:var(--text);}
+  .cert-list li span:last-child{color:var(--text-faint); font-family:'IBM Plex Mono', monospace; font-size:12px; white-space:nowrap;}
+  .ach-list li{color:var(--text-muted);}
+  .ach-list li::before{content:'—'; color:var(--amber); margin-right:10px;}
+</style>
+</head>
+<body>
+<div class="curtain"><span class="mono">skills.map()</span></div>
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>SHAI&nbsp;·&nbsp;SV</a>
+    <button class="nav-toggle mono" aria-label="Menu">☰</button>
+    <nav class="links">
+      <a href="index.html" data-transition>Home</a>
+      <a href="experience.html" data-transition>Experience</a>
+      <a href="projects.html" data-transition>Projects</a>
+      <a href="skills.html" data-transition>Skills</a>
+      <a href="contact.html" data-transition>Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="hero-bg-art" aria-hidden="true">
+    <svg viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="var(--amber)" stroke-width="1" opacity="0.5">
+        <circle cx="520" cy="230" r="60"/><circle cx="520" cy="230" r="120"/><circle cx="520" cy="230" r="180"/>
+      </g>
+      <g fill="none" stroke="var(--violet)" stroke-width="1" opacity="0.6">
+        <ellipse cx="520" cy="230" rx="180" ry="70" transform="rotate(28 520 230)"/>
+        <ellipse cx="520" cy="230" rx="180" ry="70" transform="rotate(-28 520 230)"/>
+      </g>
+      <circle cx="520" cy="230" r="10" fill="var(--amber)"/>
+      <g fill="var(--violet-soft)">
+        <circle cx="700" cy="230" r="5"/><circle cx="374" cy="132" r="5"/><circle cx="374" cy="328" r="5"/>
+        <circle cx="605" cy="98" r="4"/><circle cx="605" cy="362" r="4"/><circle cx="435" cy="86" r="4"/>
+      </g>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="page-eyebrow">04 — Stack map</div>
+    <h1 class="page-title display" data-reveal="chars">Skills</h1>
+    <p class="page-sub">The tools I reach for, grouped by what they're for. Badges draw themselves in as you scroll; the graph below shows how the pieces actually connect in the systems I build.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num mono">core stack</span><h2 class="section-title">Daily tools</h2></div>
+    <div class="badge-grid reveal-stagger">
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l-4 3v6l4 3"/><path d="M16 3l4 3v6l-4 3"/><path d="M10 21l2-18"/></svg><span class="tech-badge-label mono">Python</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"/><path d="M4 12h10"/><path d="M4 18h13"/><circle cx="19" cy="12" r="1.4" fill="var(--violet)" stroke="none"/></svg><span class="tech-badge-label mono">SQL</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 3 5 6.5 5 10a5 5 0 01-10 0c0-1.6.8-3 2-4.3-.2 1.4.2 2.3 1 2.8-.4-2 .6-4 2-5.5z"/></svg><span class="tech-badge-label mono">PyTorch</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg><span class="tech-badge-label mono">FastAPI</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v5L5 14a3 3 0 003 4h8a3 3 0 003-4l-4-7V2"/><path d="M8 2h8"/><path d="M7 16h10"/></svg><span class="tech-badge-label mono">Flask</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="7" height="7" rx="2"/><rect x="14" y="10" width="7" height="7" rx="2"/><path d="M10 10.5h4"/></svg><span class="tech-badge-label mono">LangChain</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6l-7 4-7-4V6z"/><path d="M12 12v8"/><path d="M5 6l7 4 7-4"/></svg><span class="tech-badge-label mono">Qdrant</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg><span class="tech-badge-label mono">ChromaDB</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg><span class="tech-badge-label mono">Selenium</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="19" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7 7.3L10.3 16M17 7.3L13.7 16M7.4 6h9.2"/></svg><span class="tech-badge-label mono">MCP</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20V13" stroke-linecap="round"/></svg><span class="tech-badge-label mono">Power BI</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="12" r="2.2"/><path d="M6 8.2V15.8M8 6.6a8 8 0 0010 6.6M8 17.4a8 8 0 0110-6.6"/></svg><span class="tech-badge-label mono">Git</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 10h18M9 4v16"/></svg><span class="tech-badge-label mono">Pandas</span></div>
+
+      <div class="tech-badge"><svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18V9l8-5 8 5v9"/><path d="M9 21v-6h6v6"/><circle cx="12" cy="11" r="1.6" fill="var(--violet)" stroke="none"/></svg><span class="tech-badge-label mono">GenAI / LLM</span></div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num mono">01.5</span><h2 class="section-title">Proficiency</h2></div>
+    <p class="section-sub reveal" style="margin-top:-24px; margin-bottom:36px;">A self-rated read on depth, not just exposure — weighted by how much of my production work actually runs through each tool.</p>
+    <div class="chart-bars reveal">
+      <div class="cbar-row"><span class="cbar-label">Python</span><div class="cbar-track"><div class="cbar-fill" style="--pct:95%"></div></div><span class="cbar-pct">95%</span></div>
+      <div class="cbar-row"><span class="cbar-label">RAG &amp; Hybrid Retrieval</span><div class="cbar-track"><div class="cbar-fill" style="--pct:90%"></div></div><span class="cbar-pct">90%</span></div>
+      <div class="cbar-row"><span class="cbar-label">FastAPI / Flask</span><div class="cbar-track"><div class="cbar-fill" style="--pct:88%"></div></div><span class="cbar-pct">88%</span></div>
+      <div class="cbar-row"><span class="cbar-label">Qdrant / ChromaDB</span><div class="cbar-track"><div class="cbar-fill" style="--pct:85%"></div></div><span class="cbar-pct">85%</span></div>
+      <div class="cbar-row"><span class="cbar-label">LangChain / LLM tooling</span><div class="cbar-track"><div class="cbar-fill" style="--pct:82%"></div></div><span class="cbar-pct">82%</span></div>
+      <div class="cbar-row"><span class="cbar-label">PyTorch / GANs</span><div class="cbar-track"><div class="cbar-fill" style="--pct:78%"></div></div><span class="cbar-pct">78%</span></div>
+      <div class="cbar-row"><span class="cbar-label">SQL &amp; Data Analysis</span><div class="cbar-track"><div class="cbar-fill" style="--pct:80%"></div></div><span class="cbar-pct">80%</span></div>
+      <div class="cbar-row"><span class="cbar-label">Automation (Selenium, MCP)</span><div class="cbar-track"><div class="cbar-fill" style="--pct:83%"></div></div><span class="cbar-pct">83%</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="focus">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num mono">01.75</span><h2 class="section-title">Where the hours go</h2></div>
+    <div class="radial-row reveal">
+      <div class="radial">
+        <svg viewBox="0 0 112 112"><circle class="radial-track" cx="56" cy="56" r="48"/><circle class="radial-fill" cx="56" cy="56" r="48" style="stroke:var(--amber); --off:60"/></svg>
+        <div class="radial-num">80%</div>
+        <div class="radial-label">RAG &amp; LLM systems</div>
+      </div>
+      <div class="radial">
+        <svg viewBox="0 0 112 112"><circle class="radial-track" cx="56" cy="56" r="48"/><circle class="radial-fill" cx="56" cy="56" r="48" style="stroke:var(--violet); --off:150"/></svg>
+        <div class="radial-num">50%</div>
+        <div class="radial-label">Backend &amp; APIs</div>
+      </div>
+      <div class="radial">
+        <svg viewBox="0 0 112 112"><circle class="radial-track" cx="56" cy="56" r="48"/><circle class="radial-fill" cx="56" cy="56" r="48" style="stroke:var(--green); --off:195"/></svg>
+        <div class="radial-num">35%</div>
+        <div class="radial-label">ML / GANs / EDA</div>
+      </div>
+      <div class="radial">
+        <svg viewBox="0 0 112 112"><circle class="radial-track" cx="56" cy="56" r="48"/><circle class="radial-fill" cx="56" cy="56" r="48" style="stroke:var(--amber-soft); --off:240"/></svg>
+        <div class="radial-num">20%</div>
+        <div class="radial-label">Automation &amp; tooling</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="graph">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num mono">02</span><h2 class="section-title">How the stack connects</h2></div>
+    <p class="section-sub reveal" style="margin-top:-24px; margin-bottom:24px;">Hover a node to trace what it's actually wired to in my projects — this is a map of real dependencies, not a random cluster.</p>
+    <canvas id="netCanvas" class="reveal-scale"></canvas>
+    <div class="net-legend reveal">
+      <span><span class="net-dot" style="background:var(--amber)"></span>Retrieval &amp; data</span>
+      <span><span class="net-dot" style="background:var(--violet)"></span>Backend &amp; tooling</span>
+      <span><span class="net-dot" style="background:var(--green)"></span>ML / generative</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num mono">03</span><h2 class="section-title">Full skill index</h2></div>
+    <div class="skill-groups reveal">
+      <div>
+        <div class="skill-group-title">AI / ML &amp; GenAI</div>
+        <div class="skill-chips">
+          <span class="skill-chip">RAG</span><span class="skill-chip">LLMs</span><span class="skill-chip">GenAI</span>
+          <span class="skill-chip">MCP</span><span class="skill-chip">GANs (CTGAN, RealTabFormer)</span>
+          <span class="skill-chip">Supervised &amp; Unsupervised Learning</span><span class="skill-chip">Predictive Modeling</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title">Vector &amp; Search</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Qdrant</span><span class="skill-chip">ChromaDB</span><span class="skill-chip">Hybrid Retrieval (BM25 + Dense)</span>
+          <span class="skill-chip">Cross-Encoder Reranking</span><span class="skill-chip">Semantic Search</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title">Programming, Data &amp; Visualization</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Python</span><span class="skill-chip">SQL</span><span class="skill-chip">Pandas</span>
+          <span class="skill-chip">NumPy</span><span class="skill-chip">Scikit-learn</span><span class="skill-chip">PyTorch</span>
+          <span class="skill-chip">Data Cleaning</span><span class="skill-chip">Feature Engineering</span><span class="skill-chip">Statistical Analysis</span>
+          <span class="skill-chip">Power BI</span><span class="skill-chip">Matplotlib</span><span class="skill-chip">Seaborn</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title">Backend &amp; Deployment</div>
+        <div class="skill-chips">
+          <span class="skill-chip">FastAPI</span><span class="skill-chip">Flask</span><span class="skill-chip">Gunicorn</span>
+          <span class="skill-chip">Render</span><span class="skill-chip">REST APIs</span><span class="skill-chip">Async Programming (asyncio, httpx)</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title">Automation &amp; Tooling</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Selenium</span><span class="skill-chip">PyInstaller</span><span class="skill-chip">FastMCP</span>
+          <span class="skill-chip">SQLite</span><span class="skill-chip">BeautifulSoup</span><span class="skill-chip">Playwright</span>
+          <span class="skill-chip">Server-Sent Events</span><span class="skill-chip">Rate Limiting &amp; Circuit Breakers</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title">Process &amp; Soft Skills</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Git</span><span class="skill-chip">Agile</span><span class="skill-chip">SDLC</span>
+          <span class="skill-chip">EDA</span><span class="skill-chip">Problem Solving</span><span class="skill-chip">MS Excel (VLOOKUP, Pivot Tables)</span>
+          <span class="skill-chip">Written &amp; Oral Communication</span><span class="skill-chip">Analytical Thinking</span>
+          <span class="skill-chip">Decision Making</span><span class="skill-chip">Time Management</span>
+          <span class="skill-chip">Attention to Detail</span><span class="skill-chip">Team Collaboration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="certs" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num mono">04</span><h2 class="section-title">Certifications &amp; recognition</h2></div>
+    <div class="cert-grid reveal">
+      <ul class="cert-list mono">
+        <li><span>GenAI Powered Data Analytics Job Simulation</span><span>Tata × Forage</span></li>
+        <li><span>Machine Learning &amp; Deep Learning</span><span>UpGrad</span></li>
+        <li><span>Database Management Systems, Python &amp; Foundations of Data Science</span><span>UpGrad</span></li>
+        <li><span>Foundations of Data Science</span><span>Scaler</span></li>
+        <li><span>Data Science Program</span><span>LMES Academy &amp; Uptor</span></li>
+      </ul>
+      <div>
+        <div class="skill-group-title">Achievements</div>
+        <ul class="ach-list">
+          <li>Won a regional hackathon at PSG College of Technology — low-budget air purifier model.</li>
+          <li>Won inter- and intra-college talent show competitions (singing).</li>
+          <li>B.Tech, Artificial Intelligence &amp; Data Science — K. Ramakrishnan College of Technology, CGPA 7.3.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid reveal">
+      <div>
+        <h3 class="footer-cta display">Want the full picture<br>in one document?</h3>
+        <a class="btn btn-primary" href="assets/Shai-Sharath-Vijey-S-Resume.pdf" download>↓ Download résumé</a>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:shaiyuva.sv@gmail.com">shaiyuva.sv@gmail.com</a>
+        <a href="tel:+919629698772">+91 96296 98772</a>
+        <a href="https://www.linkedin.com/in/shai-sharath-vijey-s-b79546251" target="_blank" rel="noopener">linkedin.com/in/shai-sharath-vijey-s</a>
+        <a href="contact.html" data-transition>Get in touch →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Shai Sharath Vijey S.</span>
+      <div class="footer-nav mono">
+        <a href="index.html" data-transition>Home</a>
+        <a href="experience.html" data-transition>Experience</a>
+        <a href="projects.html" data-transition>Projects</a>
+        <a href="skills.html" data-transition>Skills</a>
+        <a href="contact.html" data-transition>Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+<script>
+/* stack dependency graph */
+(function(){
+  const canvas = document.getElementById('netCanvas');
+  const ctx = canvas.getContext('2d');
+  let W,H,DPR;
+
+  const cats = { retrieval:'#F2B84B', backend:'#7C83FD', ml:'#6FCF97' };
+  const nodes = [
+    {label:'Python', cat:'backend', x:0.5, y:0.5, core:true},
+    {label:'RAG', cat:'retrieval', x:0.28, y:0.22},
+    {label:'Qdrant', cat:'retrieval', x:0.14, y:0.42},
+    {label:'ChromaDB', cat:'retrieval', x:0.16, y:0.68},
+    {label:'Hybrid Search', cat:'retrieval', x:0.32, y:0.82},
+    {label:'LangChain', cat:'retrieval', x:0.38, y:0.5},
+    {label:'FastAPI', cat:'backend', x:0.68, y:0.2},
+    {label:'Flask', cat:'backend', x:0.82, y:0.38},
+    {label:'Selenium', cat:'backend', x:0.86, y:0.62},
+    {label:'MCP', cat:'backend', x:0.7, y:0.8},
+    {label:'PyTorch', cat:'ml', x:0.5, y:0.85},
+    {label:'GANs', cat:'ml', x:0.62, y:0.62},
+    {label:'Scikit-learn', cat:'ml', x:0.5, y:0.14},
+    {label:'SQLite', cat:'backend', x:0.9, y:0.5},
+    {label:'Web Scraping', cat:'backend', x:0.78, y:0.06},
+  ];
+  const links = [[0,1],[0,4],[1,2],[1,3],[1,4],[4,2],[4,3],[0,6],[0,7],[7,8],[6,9],[0,10],[10,11],[0,12],[12,11],[0,9],[6,0],[7,13],[9,13],[0,14],[14,7],[14,8]];
+
+  let positions = [];
+  function layout(){
+    const rect = canvas.getBoundingClientRect();
+    DPR = window.devicePixelRatio||1; W = rect.width; H = rect.height;
+    canvas.width = W*DPR; canvas.height = H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+    positions = nodes.map(n=>({x:n.x*W, y:n.y*H, phase:Math.random()*Math.PI*2}));
+  }
+  let hoverIdx = -1, t=0;
+  function draw(){
+    t+=0.016; ctx.clearRect(0,0,W,H);
+    const drawn = positions.map(p=>({x:p.x+Math.sin(t*0.5+p.phase)*3, y:p.y+Math.cos(t*0.4+p.phase)*3}));
+    links.forEach(([a,b])=>{
+      const hi = (hoverIdx===a||hoverIdx===b);
+      ctx.beginPath(); ctx.moveTo(drawn[a].x, drawn[a].y); ctx.lineTo(drawn[b].x, drawn[b].y);
+      ctx.strokeStyle = hi ? 'rgba(242,184,75,0.85)' : 'rgba(139,146,165,0.18)';
+      ctx.lineWidth = hi ? 2 : 1; ctx.stroke();
+    });
+    nodes.forEach((n,i)=>{
+      const p = drawn[i];
+      const r = n.core ? 8 : 5.5;
+      ctx.beginPath(); ctx.arc(p.x,p.y,r,0,Math.PI*2);
+      ctx.fillStyle = cats[n.cat]; ctx.globalAlpha = (hoverIdx===-1||hoverIdx===i||links.some(l=>(l[0]===hoverIdx&&l[1]===i)||(l[1]===hoverIdx&&l[0]===i))) ? 1 : 0.25;
+      ctx.fill(); ctx.globalAlpha = 1;
+      ctx.font = (n.core? "bold 12px":"11px") + " 'IBM Plex Mono', monospace";
+      ctx.fillStyle = 'rgba(241,239,230,0.9)';
+      ctx.fillText(n.label, p.x + r + 6, p.y + 4);
+    });
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', layout);
+  canvas.addEventListener('mousemove', (e)=>{
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX-rect.left, my = e.clientY-rect.top;
+    let closest=-1, dist=22;
+    positions.forEach((p,i)=>{ const d=Math.hypot(p.x-mx,p.y-my); if(d<dist){dist=d; closest=i;} });
+    hoverIdx = closest;
+  });
+  canvas.addEventListener('mouseleave', ()=>{ hoverIdx=-1; });
+  layout(); draw();
+})();
+</script>
+</body>
+</html>
