@@ -1,0 +1,21 @@
+/* ---- FX pack: slat transition, progress bar, tilt, magnetic, nav hide ---- */
+html.fx-nav body:before{content:'';position:fixed;inset:0;z-index:1000;background:var(--ink-raised-2)}
+#fx{position:fixed;inset:0;z-index:1000;pointer-events:none;display:flex}
+#fx i{flex:1;background:var(--ink-raised-2);transform:scaleY(1);transition:transform .6s var(--ease)}
+#fx i:nth-child(odd){transform-origin:top}#fx i:nth-child(even){transform-origin:bottom}
+#fx i:nth-child(2){transition-delay:.05s}#fx i:nth-child(3){transition-delay:.1s}#fx i:nth-child(4){transition-delay:.15s}#fx i:nth-child(5){transition-delay:.2s}#fx i:nth-child(6){transition-delay:.25s}
+#fx.open i{transform:scaleY(0)}#fx.open i:nth-child(odd){transform-origin:bottom}#fx.open i:nth-child(even){transform-origin:top}
+#fx b{position:absolute;inset:0;display:grid;place-items:center;font:600 clamp(2rem,7vw,4.5rem) 'Space Grotesk',sans-serif;background:linear-gradient(100deg,var(--amber-soft),var(--amber),var(--violet-soft));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;transform:scale(.94);transition:opacity .25s,transform .5s var(--ease)}
+#fx:not(.open) b{opacity:1;transform:none;transition-delay:.35s}
+#fx-bar{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--violet),var(--amber))}
+header.nav{transition:transform .4s var(--ease)}header.nav.hid{transform:translateY(-100%)}
+.fx-spot{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(242,184,75,.13),transparent 70%)}
+.fx-t:hover>.fx-spot{opacity:1}.fx-t{transition:transform .25s ease-out,box-shadow .3s,border-color .3s}.fx-t:hover{box-shadow:var(--shadow-amber)}
+.btn{transition:transform .2s ease-out,box-shadow .25s,background .25s,border-color .25s}
+.hero-bg-art{will-change:transform}
+@media(prefers-reduced-motion:reduce){#fx,#fx-bar{display:none}}
+/* soft glow behind the page name instead of divider lines */
+#fx b{z-index:1}
+#fx:after{content:'';position:absolute;left:50%;top:50%;width:80vmin;height:80vmin;margin:-40vmin 0 0 -40vmin;border-radius:50%;background:radial-gradient(circle,rgba(124,131,253,.26),rgba(242,184,75,.12) 45%,transparent 70%);opacity:0;transform:scale(.6);transition:opacity .4s,transform .8s var(--ease)}
+#fx:not(.open):after{opacity:1;transform:scale(1);transition-delay:.3s;animation:fxPulse 1.8s ease-in-out 1s infinite}
+@keyframes fxPulse{50%{transform:scale(1.12)}}
