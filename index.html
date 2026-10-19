@@ -91,6 +91,8 @@
   .result-bar-fill{height:100%; background:linear-gradient(90deg, var(--violet), var(--amber));}
   .result-desc{font-size:13px; color:var(--text-muted);}
 </style>
+<link rel="stylesheet" href="assets/fx.css">
+<script>try{sessionStorage.getItem("fxnav")&&document.documentElement.classList.add("fx-nav")}catch(e){}</script>
 </head>
 <body>
 <div class="curtain" data-hold="1500">
@@ -391,5 +393,6 @@ setTimeout(()=>{ const h = document.getElementById('heroName'); if(h) h.classLis
   setTimeout(()=>{ runQuery('retrieval augmented generation'); document.getElementById('pgInput').value = 'retrieval augmented generation'; }, 600);
 })();
 </script>
+<script src="assets/fx.js"></script>
 </body>
 </html>
